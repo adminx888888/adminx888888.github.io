@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>my first page | Hexo</title>
+  <title>面向对象编程【对象、类、实例】 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="面向对象编程【对象、类、实例】js本身是基于面向对象思想开发出来的编程语言。 [内置类] 每种数据类型都有所属的内置类：Number(每一个数字、Nan、Infinity)、String、Boolean、Symbol、BigInt、Array、RegExp、Date、Function、Object… 每种DOM元素都有自己所属的类： window-&gt;Window-&gt;WindowProp">
 <meta property="og:type" content="article">
-<meta property="og:title" content="my first page">
+<meta property="og:title" content="面向对象编程【对象、类、实例】">
 <meta property="og:url" content="http://example.com/2021/10/30/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="面向对象编程【对象、类、实例】js本身是基于面向对象思想开发出来的编程语言。 [内置类] 每种数据类型都有所属的内置类：Number(每一个数字、Nan、Infinity)、String、Boolean、Symbol、BigInt、Array、RegExp、Date、Function、Object… 每种DOM元素都有自己所属的类： window-&gt;Window-&gt;WindowProp">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-10-30T09:20:28.000Z">
-<meta property="article:modified_time" content="2021-10-30T09:00:41.711Z">
+<meta property="article:modified_time" content="2021-11-01T12:23:40.904Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -161,7 +161,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      my first page
+      面向对象编程【对象、类、实例】
     </h1>
   
 
@@ -191,11 +191,22 @@
 <p>[相似]：一样是把函数执行（传递实参一致）</p>
 <p>​                形成私有上下文，按照步骤逐一处理</p>
 <p>​                也存在私有变量</p>
-<p>[不同]：new执行，浏览器在当前上下文中默认创建一个对象（实例对象）</p>
+<p>[不同]：new执行，浏览器在当前上下文中默认创建一个对象（实例对象，并且是空对象）</p>
 <p>​            初始化This，会让this指向实例对象。</p>
 <p>​            this.xxx=xxx 都是给实例对象创建私有属性</p>
 <p>​            除此外，其他操作都和实例对象没直接关系。</p>
 <p>​            函数如果没有返回值，或者返回的是基本类型，则默认返回创建的实例对象；如果返回的是引用类型的值，以自己返回的为主。</p>
+<p>[构造函数执行]<br>    函数被称为类，返回结果是实例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="comment">/*ec(FN)</span></span><br><span class="line"><span class="comment">    *初始化创建Fn这个类的实例对象 0x000</span></span><br><span class="line"><span class="comment">    *初始化this:this-&gt;0x000</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">	<span class="keyword">let</span> total = <span class="number">0</span> <span class="comment">//上下文私有变量 和实例对象没有必然联系</span></span><br><span class="line">	<span class="built_in">this</span>.x=<span class="number">10</span> <span class="comment">// this.xxx=xxx  是给实例对象设置的私有属性和方法</span></span><br><span class="line">	<span class="built_in">this</span>.y=<span class="number">20</span></span><br><span class="line">	<span class="built_in">this</span>.say=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">&#x27;SAY&#x27;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">// 无返回值，或者返回基本类型。默认返回实例对象 0x000</span></span><br><span class="line">    <span class="comment">// 返回引用类型值 则以自己返回为主</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> f1 = <span class="keyword">new</span> Fn()</span><br><span class="line"><span class="built_in">console</span>.log(f1)</span><br><span class="line"><span class="keyword">let</span> f2 = <span class="keyword">new</span> Fn; <span class="comment">// new执行时候，如果类不需要传递实参，可以不加小括号 (不加小括号叫无参列表，有小括号叫有参列表)</span></span><br><span class="line"><span class="comment">// 优先级 new Fn 19  new Fn() 20</span></span><br><span class="line"><span class="comment">// 每次new都是重新执行 （重新形成新的私有上下文，重新创建一个实例对象，代码重新执行）</span></span><br></pre></td></tr></table></figure>
+
+<p>检测某个成员（属性\键）是否属于这个对象，或者是否属于这个对象的私有属性</p>
+<p>in 检测成员是否属于这个对象，不管是私有还是共有，只要有检测结果就是true</p>
+<p>hasOwnProperty 用来检测当前成员是否为对象私有属性。</p>
+<p>如何检测某个属性既是私有的属性也是公有的</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hasPubProperty</span> (<span class="params">obj,attr</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 获取原型上的属性，公有属性</span></span><br><span class="line">    <span class="keyword">let</span> proto = <span class="built_in">Object</span>.getPrototypeOf(obj)</span><br><span class="line">    <span class="keyword">while</span>(proto)&#123;</span><br><span class="line">    <span class="comment">// 依次查找原型链，直到找到Object.protype为止</span></span><br><span class="line">       <span class="keyword">if</span>(proto.hasOwnProperty(attr))&#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">       &#125;</span><br><span class="line">       proto = <span class="built_in">Object</span>.getPrototypeOf(proto)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> symbol=<span class="built_in">Symbol</span>()</span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">	<span class="attr">name</span>:<span class="string">&#x27;zhufeng&#x27;</span>,</span><br><span class="line">	<span class="attr">age</span>:<span class="number">12</span>,</span><br><span class="line">	<span class="number">3</span>:<span class="string">&quot;哈哈哈&quot;</span>,</span><br><span class="line">	<span class="number">0</span>:<span class="string">&quot;zxt&quot;</span>,</span><br><span class="line">	[symbol]:<span class="number">100</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> key <span class="keyword">in</span> obj)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(key)</span><br><span class="line">    <span class="comment">// for in遍历时候 无法遍历Symbol的私有属性，但是可以遍历到自己扩展的公共属性[内置的公共属性是不可枚举的（就是无法遍历到的）]</span></span><br><span class="line">    <span class="comment">// 遍历顺序：优先遍历数字，按照由小到大</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> keys = [</span><br><span class="line">    ...Object.getOwnPropertyNames(obj),</span><br><span class="line">    ...Object.geyOwnPropertSymbols(obj)</span><br><span class="line">]</span><br><span class="line">keys.forEach(<span class="function"><span class="params">key</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(key,obj[key])</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -288,6 +299,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2021/11/02/%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
   
   
     <a href="/2021/10/29/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
