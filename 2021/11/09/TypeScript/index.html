@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1、箭头函数：箭头函数中没有自己的this,所用到的this都是所处上下文中的this 12345678910111213let obj &#x3D;&amp;#123;    n:0,    fn()&amp;#123;        let self &#x3D; this        setTimeout(function()&amp;#123;            console.log(this)            sel">
+  <meta name="description" content="注：vscode(error lens) 1、 安装 12npm -g install typescripttsc -v &#x2F;&#x2F; 查看版本  2、创建ts 123456const hello &#x3D; (name:string) &#x3D;&gt; &amp;#123;    return &#96;hello$&amp;#123;name&amp;#125;&#96;&amp;#125;hello(&amp;#x27;master&amp;#x27;)tsc xxx.ts">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/2021/11/09/this%E7%9A%84%E5%A4%84%E7%90%86%E5%92%8C%E5%BA%94%E7%94%A8/index.html">
+<meta property="og:url" content="http://example.com/2021/11/09/TypeScript/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="1、箭头函数：箭头函数中没有自己的this,所用到的this都是所处上下文中的this 12345678910111213let obj &#x3D;&amp;#123;    n:0,    fn()&amp;#123;        let self &#x3D; this        setTimeout(function()&amp;#123;            console.log(this)            sel">
+<meta property="og:description" content="注：vscode(error lens) 1、 安装 12npm -g install typescripttsc -v &#x2F;&#x2F; 查看版本  2、创建ts 123456const hello &#x3D; (name:string) &#x3D;&gt; &amp;#123;    return &#96;hello$&amp;#123;name&amp;#125;&#96;&amp;#125;hello(&amp;#x27;master&amp;#x27;)tsc xxx.ts">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-11-09T07:06:09.849Z">
-<meta property="article:modified_time" content="2021-11-09T15:02:25.398Z">
+<meta property="article:published_time" content="2021-11-09T07:53:45.239Z">
+<meta property="article:modified_time" content="2021-11-09T09:54:59.668Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -154,30 +154,44 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-this的处理和应用" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-TypeScript" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1、箭头函数：箭头函数中没有自己的this,所用到的this都是所处上下文中的this</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj =&#123;</span><br><span class="line">    <span class="attr">n</span>:<span class="number">0</span>,</span><br><span class="line">    <span class="function"><span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">let</span> self = <span class="built_in">this</span></span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="built_in">this</span>)</span><br><span class="line">            self.n++</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function">()=&gt;</span>&#123;</span><br><span class="line">            <span class="built_in">this</span>.n++ <span class="comment">//上级上下文中的this-&gt;obj</span></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>注：vscode(error lens)</p>
+<p>1、 安装</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm -g install typescript</span><br><span class="line">tsc -v <span class="comment">// 查看版本</span></span><br></pre></td></tr></table></figure>
 
-<p>2、Function.prototype:call/apply/bind 都是用来改变this指向的，函数执行调用这三个方法可以实现this的改变</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">	<span class="attr">name</span>:<span class="string">&#x27;tenx&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line">obj.fn() <span class="comment">//不起作用</span></span><br><span class="line">fn.call(obj)</span><br><span class="line"><span class="number">1</span>、fn实例 基于_proto_找到<span class="built_in">Function</span>.prototype的call 把call执行</span><br><span class="line">   + call中的<span class="built_in">this</span>：fn,传了一个参数obj</span><br><span class="line"><span class="number">2</span>、call方法内部做的事情</span><br><span class="line">   + 把fn执行（也就是把call中的<span class="built_in">this</span>执行）</span><br><span class="line">   + 把fn中的<span class="built_in">this</span>改变为第一个参数obj，并把除了Obj以外的剩余参数，依次传给fn</span><br><span class="line">call/apply 立即执行函数，并且改变函数中的This 并且给函数传递参数信息</span><br><span class="line">fn.apply(obj,[<span class="number">10</span>,<span class="number">20</span>]) <span class="comment">//apply和call的唯一区别就是给fn传递参数时候，apply以数组形式传递</span></span><br></pre></td></tr></table></figure>
+<p>2、创建ts</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const hello = (name:string) =&gt; &#123;</span><br><span class="line">    return `hello$&#123;name&#125;`</span><br><span class="line">&#125;</span><br><span class="line">hello(&#x27;master&#x27;)</span><br><span class="line"></span><br><span class="line">tsc xxx.ts //编译ts为js</span><br></pre></td></tr></table></figure>
 
-<p>document.body.onclick=fn  // 把fn方法本身作为值绑定给BODY的点击事件，当触发BODY的点击操作，浏览器会帮助把fn函数执行，【并且传递一个事件对象】 方法中的this-&gt;body,=&gt;this.body x:MouseEvent y:undefined</p>
-<p>doucoment.body.onclicl=fn() 立即执行Fn 把其执行的返回结果当作值 赋值给事件绑定，事件触发执行的是返回结果</p>
-<p>箭头函数：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fn=<span class="function">()=&gt;</span>&#123;&#125;</span><br><span class="line">fn.call(obj) <span class="comment">//不起作用，箭头函数没有this</span></span><br></pre></td></tr></table></figure>
+<p>3、any类型和联合类型</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// any</span></span><br><span class="line"><span class="keyword">let</span> notSure:<span class="built_in">any</span> = <span class="number">4</span></span><br><span class="line">notSure=<span class="string">&#x27;123&#x27;</span></span><br><span class="line">notSure=<span class="literal">false</span></span><br><span class="line">notSure.getName()</span><br><span class="line"><span class="comment">// 联合类型</span></span><br><span class="line"><span class="keyword">let</span> numberOrString:<span class="built_in">number</span>|<span class="built_in">string</span> = <span class="number">24</span></span><br></pre></td></tr></table></figure>
 
-<p>call的性能要比apply好一些，尤其传递三个以上参数</p>
-<p>// 获取数据中的最大值</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">10</span>,<span class="number">12</span>,<span class="number">32</span>,<span class="number">42</span>,<span class="number">23</span>,<span class="number">45</span>]</span><br><span class="line">arr.sort(<span class="function">(<span class="params">a,b</span>)=&gt;</span>b-a)</span><br></pre></td></tr></table></figure>
+<p>4、array和tuple</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// array</span><br><span class="line">let arrOfNumbers:number[] = [1,2,3,4]</span><br><span class="line">// 元组tuple 不同数据放在一块</span><br><span class="line">let user:[string,number]=[&#x27;master&#x27;,20]</span><br></pre></td></tr></table></figure>
 
-<p>// 需求：任意数求和【把传递进来的实参（不固定个数）进行求和】</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">...params</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> params.reduce(<span class="function">(<span class="params">result,item</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> result+item</span><br><span class="line">    &#125;,<span class="number">0</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>5、interface 接口</p>
+<pre><code> + 对对象的形状（shape）进行描述
+ + 对类(class)进行抽象
+ + Duck Typing (鸭子类型)
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">interface IPerson &#123;</span><br><span class="line">    readonly id:number; // 只读属性</span><br><span class="line">    name:string,</span><br><span class="line">    age?:number  //可选属性</span><br><span class="line">&#125;</span><br><span class="line">let master:IPerson = &#123;</span><br><span class="line">    id:123</span><br><span class="line">    name:&#x27;master&#x27;,</span><br><span class="line">    age:20</span><br><span class="line">&#125;</span><br><span class="line">master.id = 111 //不可用</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// arguments类数组，不是数组，不能直接使用数组的方法（只有数组作为Array的实例才能直接调用）</span></span><br><span class="line">    <span class="comment">// 1、把类数组转换为数组</span></span><br><span class="line"><span class="comment">//    let params =Array.form(arguments)</span></span><br><span class="line"><span class="comment">//    let params = [... arguments]</span></span><br><span class="line">    <span class="keyword">let</span> params =[]</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i =<span class="number">0</span>;i&lt;<span class="built_in">arguments</span>.length;i++)&#123;</span><br><span class="line">        params.push(<span class="built_in">arguments</span>[i])</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>6、函数 、 类型推断</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> add = <span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">x: <span class="built_in">number</span>, y: <span class="built_in">number</span>, z?: <span class="built_in">number</span></span>): <span class="title">number</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x + y</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> result = add(<span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> add2: <span class="function">(<span class="params">x: <span class="built_in">number</span>, y: <span class="built_in">number</span>, z?: <span class="built_in">number</span></span>) =&gt;</span> <span class="built_in">number</span> = add</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>7、类 class</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">ts-node //一直运行tsc</span><br><span class="line"></span><br><span class="line">8、接口对类进行抽象 interface</span><br><span class="line"></span><br><span class="line">```tsx</span><br><span class="line">interface Radio &#123;</span><br><span class="line">    switchRadio(trigger: boolean): void</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Car implements Radio &#123;</span><br><span class="line">    swithcRadio() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class cellPhone &#123;</span><br><span class="line">    switchRadio() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface Radio &#123;</span><br><span class="line">    switchRadio(trigger: boolean): void</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface Battery extends Radio &#123;</span><br><span class="line">    checkBatteryStatus(): void</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Car implements Battery &#123;</span><br><span class="line">    checkBatteryStatus() &#123; &#125;</span><br><span class="line">    switchRadio() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class cellPhone implements Battery &#123;</span><br><span class="line">    checkBatteryStatus() &#123; &#125;</span><br><span class="line">    switchRadio() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>9、枚举</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">enum Direction &#123;</span><br><span class="line">    up,</span><br><span class="line">    Down,</span><br><span class="line">    Left,</span><br><span class="line">    Right</span><br><span class="line">&#125;</span><br><span class="line">console.log(Direction.up)</span><br><span class="line">console.log(Direction[0])</span><br></pre></td></tr></table></figure>
+
+<p>10、泛型</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function echo&lt;T&gt;(arg:T):T&#123;</span><br><span class="line">    return arg</span><br><span class="line">&#125;</span><br><span class="line">const result:string = echo(123)</span><br><span class="line">let arr:number[]=[1,2,3,5]</span><br><span class="line">let arrTwo:Array&lt;number&gt;=[1,2,3,5]</span><br><span class="line">// Array是一个interface </span><br><span class="line">interface Array&lt;T&gt;&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
 
 
       
@@ -258,7 +272,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/11/09/this%E7%9A%84%E5%A4%84%E7%90%86%E5%92%8C%E5%BA%94%E7%94%A8/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/11/09/TypeScript/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -272,17 +286,8 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/11/09/TypeScript/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          (no title)
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/11/02/%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2021/11/09/this%E7%9A%84%E5%A4%84%E7%90%86%E5%92%8C%E5%BA%94%E7%94%A8/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title"></div>
       <i class="icon-circle-right"></i>
     </a>
